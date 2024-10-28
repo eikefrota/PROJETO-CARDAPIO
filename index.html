@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="styles/output.css">
+    
+    <title>Frota's Burguer</title>
+</head>
+<body>
+    <header  class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
+        <div class="w=full h-full flex flex-col justify-center items-center">
+            
+            <img src="assets/logo.png" 
+            alt="Logo Frota's Burguer" 
+            class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200">
+            
+            <h1 class="text-4xl mt-4 mb-2 font-bold text-white">Frota's Burguer</h1>
+
+            <span class="text-white font-medium">Rua Frota 11, Fortaleza - CE</span>]
+
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-4" id="date-span">
+                <span class="text-white font-medium">Seg á Dom - 18:00 às 22:00</span>
+            </div>
+
+        </div>
+    </header>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">Conheça nosso menu</h2>
+
+        <!--INICIO MENU-->
+        <div id="menu">
+            <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+                
+                <!--PRODUTO 1-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-1.png" 
+                    alt="Big Smash Duplo" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">Big Smash Duplo</p>
+                        <p class="text-sm">Pão brioche, 2 carnes smash com queijo cheddar, bacon, alface e maionese especial. Um clássico irresistível!</p>
+                        
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 24.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Big Smash Duplo"
+                            data-price="24.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 1-->
+
+                <!--PRODUTO 2-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-2.png" 
+                    alt="Bacon Smash Duplo" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">Bacon Smash Duplo</p>
+                        <p class="text-sm">Pão brioche, 2 carnes smash com queijo cheddar derretido e bacon crocante. Um deleite para os amantes de bacon!</p>
+                        
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 29.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Bacon Smash Duplo"
+                            data-price="29.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 2-->
+
+                <!--PRODUTO 3-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-3.png" 
+                    alt="Double Cheddar Smash" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">Double Cheddar Smash</p>
+                        <p class="text-sm">Pão brioche, 2 carnes smash cobertas com generosas porções de cheddar derretido e um saboroso molho do chef. Uma explosão de sabor!
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 27.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Double Cheddar Smash"
+                            data-price="27.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 3-->
+
+                <!--PRODUTO 4-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-4.png" 
+                    alt="Chicken Salad" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">Chicken Salad</p>
+                        <p class="text-sm">Frango empanado crocante com cebola, tomate e picles, servido em um pão bola macio. Uma combinação que vai te deixar querendo mais!
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 19.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Chicken Salad"
+                            data-price="19.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 4-->
+
+                <!--PRODUTO 5-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-5.png" 
+                    alt="Tradicional Smash Duplo" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">Tradicional Smash Duplo</p>
+                        <p class="text-sm">Duas carnes smash, cobertas com queijo mussarela, acompanhadas de alface e tomate, tudo servido em um pão bola macio. Um clássico que nunca sai de moda!
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 21.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Tradicional Smash Duplo"
+                            data-price="21.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 5-->
+
+                <!--PRODUTO 6-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-6.png" 
+                    alt="BBQ Smash" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">BBQ Smash</p>
+                        <p class="text-sm">Uma generosa carne smash, acompanhada de cebola, alface e tomate, servida em um pão bola macio com um irresistível molho barbecue. Sabor e suculência!
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 24.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="BBQ Smash"
+                            data-price="24.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 6-->
+
+                <!--PRODUTO 7-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-7.png" 
+                    alt="Onion Crispy BBQ" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">Onion Crispy BBQ</p>
+                        <p class="text-sm">Pão brioche, hambúrguer smash com bacon crispy crocante e cebola empanada, finalizado com um saboroso molho barbecue. Muita crocância!
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 28.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Onion Crispy BBQ"
+                            data-price="28.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 7-->
+
+                <!--PRODUTO 8-->
+                <div class="flex gap-2">
+                    <img src="assets/hamb-8.png" 
+                    alt="Vegan Delight" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div>
+                        <p class="font-bold">Vegan Delight</p>
+                        <p class="text-sm">Um sanduíche nutritivo recheado com alface, cenoura, brócolis e tomate, tudo servido em um pão integral leve. Delicia vegana!
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 15.90</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Vegan Delight"
+                            data-price="15.90">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM PRODUTO 8-->
+            </main>
+
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">Bebidas</h2>
+            </div>
+
+            <!--GRID BEBIDAS-->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
+                
+                <!--BEBIDA 1-->
+                <div class="flex gap-2 w-full">
+                    <img src="assets/refri-1.png" 
+                    alt="Coca-Cola Lata" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div class="w-full">
+                        <p class="font-bold">Coca-Cola Lata</p>
+            
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 6.00</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Coca-Cola Lata"
+                            data-price="6.00">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM BEBIDA 1-->
+
+                <!--BEBIDA 2-->
+                <div class="flex gap-2 w-full">
+                    <img src="assets/refri-2.png" 
+                    alt="Guaraná Antartica Lata" 
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    
+                    <div class="w-full">
+                        <p class="font-bold">Guaraná Antartica Lata</p>
+            
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 6.00</p>
+                            
+                            <button class="bg-gray-900 px-5 rounded hover:scale-105 add-to-cart-btn"
+                            data-name="Guaraná Antartica Lata"
+                            data-price="6.00">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--FIM BEBIDA 2-->
+            </div>
+            <!-- FIM GRID BEBIDAS-->
+        </div>
+        <!--FIM MENU-->
+
+        <!--MODAL CART-->
+        <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
+        id="cart-modal">
+            
+            <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+                <h2 class="text-center font-bold text-2xl mb-2">
+                    Meu carrinho
+                </h2>
+
+                <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
+
+                <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+
+                <p class=" font-bold mt-4">Endereço de entrega</p>
+                <input type="text" placeholder="Digite seu endereço" id="address" class="w-full border-2 p-1 rounded my-1">
+
+                <p class="text-red-500 hidden" id="address-warn">Digite seu endereço!</p>
+
+                <div class="flex items-center justify-between mt-5 w-full">
+                    <button id="close-modal-btn">Fechar</button>
+                    <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded hover:scale-105">Finalizar pedido</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- FIM MODAL CART-->
+
+        <!--BUTTON CART FOOTER-->
+        <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
+            <button class="flex items-center gap-2 text-white font-bold hover:scale-105"
+            id="cart-btn">
+                <span id="cart-count"></span>
+                Carrinho
+                <i class="fa fa-cart-plus text-lg text-white"></i>
+            </button>
+        </footer>
+        <!--FIM BUTTON CART FOOTER-->
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
