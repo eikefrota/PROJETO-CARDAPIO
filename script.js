@@ -131,7 +131,6 @@ addressInput.addEventListener("input", function(event){
 })
 
 checkoutBtn.addEventListener("click", function(){
-    const isOpen = checkOpen();
     if(!isOpen){
         Toastify({
             text: "Ops, no momento estamos fechados!",
@@ -176,6 +175,8 @@ function checkOpen(){
     const hora = data.getHours();
     return hora >= 18 && hora < 22;
 }
+
+const isOpen = checkOpen();
 
 if(isOpen){
     dateSpan.classList.remove("bg-red-500")
