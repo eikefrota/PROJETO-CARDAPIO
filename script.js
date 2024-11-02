@@ -1,32 +1,62 @@
 const menu = document.getElementById("menu")
+const dateSpan = document.getElementById("date-span")
+
 const cartBtn = document.getElementById("cart-btn")
+const cartCounter = document.getElementById("cart-count")
 const cartModal = document.getElementById("cart-modal")
 const cartItemsContainer = document.getElementById("cart-items")
 const cartTotal = document.getElementById("cart-total")
-const checkoutBtn = document.getElementById("checkout-btn")
 const closeModalBtn = document.getElementById("close-modal-btn")
-const cartCounter = document.getElementById("cart-count")
-const addressInput = document.getElementById("address")
+const confirmBtn = document.getElementById("confirm-modal-btn")
+
+const addressModal = document.getElementById("address-modal")
+const inputCep = document.getElementById("input-cep")
+const inputStreet = document.getElementById("input-street")
+const inputNumber = document.getElementById("input-number")
+const inputComplement = document.getElementById("input-complement")
+const inputNeighborhood = document.getElementById("input-neighborhood")
+const inputCity = document.getElementById("input-city")
+const inputState = document.getElementById("input-state")
+const returnBtn = document.getElementById("return-modal-btn")
+const checkoutBtn = document.getElementById("checkout-btn")
+
 const addressWarn = document.getElementById("address-warn")
-const dateSpan = document.getElementById("date-span")
 
 let cart = []
 
-// Abrir o modal do carrinho // 
+// Abrir o modal carrinho // 
 cartBtn.addEventListener("click", function(){
     updateCartModel();
     cartModal.style.display = "flex"
 })
 
-// Fechar o modal quando clicar no botão "Fechar" //
+// Fechar o modal carrinho quando clicar no botão "Fechar" //
 closeModalBtn.addEventListener("click", function(){
     cartModal.style.display = "none"
 })
 
-// Fechar o modal quando clicar fora //
+// Fechar o modal carrinho quando clicar fora //
 cartModal.addEventListener("click", function(event){
     if(event.target === cartModal)
     {cartModal.style.display = "none"}
+})
+
+// Abrir modal endereço //
+confirmBtn.addEventListener("click", function(){
+    cartModal.style.display = "none"
+    addressModal.style.display = "flex"
+})
+
+// Voltar para o carrinho quando clicar no botão "Voltar" //
+returnBtn.addEventListener("click", function(){
+    addressModal.style.display = "none"
+    cartModal.style.display = "flex"
+})
+
+// Fechar o modal endereço quando clicar fora //
+addressModal.addEventListener("click", function(event){
+    if(event.target === addressModal)
+    {addressModal.style.display = "none"}
 })
 
 // Pegando o nome e valor do item clicado //    
@@ -56,7 +86,6 @@ function addToCart(name, price){
             quantity: 1})}
 
     updateCartModel()
-
 }
 
 // Atualiza o carrinho //
@@ -121,24 +150,15 @@ function removeItemCart(name){
     }
 }
 
-addressInput.addEventListener("input", function(event){
-    let inputValue = event.target.value;
-
-    if(inputValue !== ""){
-        addressInput.classList.remove("border-red-500")
-        addressWarn.classList.add("hidden")
-    }
-})
-
 checkoutBtn.addEventListener("click", function(){
     if(!isOpen){
         Toastify({
             text: "Ops, no momento estamos fechados!",
             duration: 3000,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "center", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
+            gravity: "top", 
+            position: "center", 
+            stopOnFocus: true, 
             style: {
                 background: "#EF4444",
             },
