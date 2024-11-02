@@ -41,8 +41,24 @@ cartModal.addEventListener("click", function(event){
     {cartModal.style.display = "none"}
 })
 
-// Abrir modal endereço //
+// Abrir modal endereço ao clicar em confirmar //
 confirmBtn.addEventListener("click", function(){
+    // Caso não haja itens no carrinho, não há como avançar //
+    if(cart.length === 0){
+        Toastify({
+            text: "Carrinho vazio!",
+            duration: 3000,
+            close: true,
+            gravity: "top", 
+            position: "center", 
+            stopOnFocus: true, 
+            style: {
+                background: "#EF4444",
+            },
+        }).showToast();
+        return;
+    }
+
     cartModal.style.display = "none"
     addressModal.style.display = "flex"
 })
@@ -93,6 +109,7 @@ function updateCartModel(){
     cartItemsContainer.innerHTML = "";
     let total = 0;
 
+    // Para cada item do array Cart, cria-se um HTML(nome, quantidade e preço) dentro do modal carrinho //
     cart.forEach(item => {
         const cartItemElement = document.createElement("div");
         cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
@@ -116,6 +133,7 @@ function updateCartModel(){
 
     })
 
+    // Tranforma o preço em Real //
     cartTotal.textContent = total.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL"
@@ -125,14 +143,6 @@ function updateCartModel(){
 }
 
 // Função para remover item do carrinho //
-cartItemsContainer.addEventListener("click", function(event){
-    if(event.target.classList.contains("remove-btn")){
-        const name = event.target.getAttribute("data-name")
-
-        removeItemCart(name)
-    }
-})
-
 function removeItemCart(name){
     const index = cart.findIndex(item => item.name === name);
 
@@ -150,7 +160,37 @@ function removeItemCart(name){
     }
 }
 
+// Ao clicar no botão remover, aciona a função de remover item //
+cartItemsContainer.addEventListener("click", function(event){
+    if(event.target.classList.contains("remove-btn")){
+        const name = event.target.getAttribute("data-name")
+
+        removeItemCart(name)
+    }
+})
+
+// Função para verificar se o local está aberto //
+function checkOpen(){
+    const data = new Date();
+    const hora = data.getHours();
+    return hora >= 18 && hora < 22;
+}
+
+const isOpen = checkOpen();
+
+// Se estiver aberto o DateSpan fica verde, se não, fica vermelho //
+if(isOpen){
+    dateSpan.classList.remove("bg-red-500")
+    dateSpan.classList.add("bg-green-500")
+}
+else{
+    dateSpan.classList.remove("bg-green-500")
+    dateSpan.classList.add("bg-red-500")
+}
+
+// Função de finalizar o pedido //
 checkoutBtn.addEventListener("click", function(){
+    // Caso o pedido for feito fora do horário de funcionamento, é exibida a mensagem //
     if(!isOpen){
         Toastify({
             text: "Ops, no momento estamos fechados!",
@@ -167,13 +207,13 @@ checkoutBtn.addEventListener("click", function(){
         return;
     }
 
-    if(cart.length === 0) return;
     if(addressInput.value === ""){
         addressWarn.classList.remove("hidden")
         addressInput.classList.add("border-red-500");
         return;
     }
 
+    // Enviar mensagem pelo WhatsApp //
     const cartItems = cart.map((item) => {
         return (
             `\n*${item.name}*\n*Quantidade:* ${item.quantity}\n*Preço:* R$${item.price}\n-------------------------------------------\n`);
@@ -189,20 +229,3 @@ checkoutBtn.addEventListener("click", function(){
     cart = [];
     updateCartModel();
 })
-
-function checkOpen(){
-    const data = new Date();
-    const hora = data.getHours();
-    return hora >= 18 && hora < 22;
-}
-
-const isOpen = checkOpen();
-
-if(isOpen){
-    dateSpan.classList.remove("bg-red-500")
-    dateSpan.classList.add("bg-green-500")
-}
-else{
-    dateSpan.classList.remove("bg-green-500")
-    dateSpan.classList.add("bg-red-500")
-}
