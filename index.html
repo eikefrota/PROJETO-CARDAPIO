@@ -428,46 +428,43 @@
         <!-- FIM MODAL CART-->
         
         <!--MODAL ADDRESS-->
-        <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
-        id="address-modal">
-            
+        <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden" id="address-modal">
+        
             <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
-                <h2 class="text-center font-bold text-2xl mb-2">
-                    ENDEREÇO
-                </h2>
-
-                <p class=" font-bold mt-4">CEP</p>
-                <input type="text" id="input-cep" class="w-full border-2 p-1 rounded my-1">
-                <p class="text-red-500 hidden" id="address-warn">Campo obrigatório!</p>
-                
-                <p class=" font-bold mt-4">Rua</p>
-                <input type="text" id="input-street" class="w-full border-2 p-1 rounded my-1">
-                <p class="text-red-500 hidden" id="address-warn">Campo obrigatório!</p>
-                
-                <p class=" font-bold mt-4">Número</p>
-                <input type="text" id="input-number" class="w-full border-2 p-1 rounded my-1">
-                <p class="text-red-500 hidden" id="address-warn">Campo obrigatório!</p>
-                
-                <p class=" font-bold mt-4">Complemento</p>
-                <input type="text" id="input-complement" class="w-full border-2 p-1 rounded my-1">
-                
-                <p class=" font-bold mt-4">Bairro</p>
-                <input type="text" id="input-neighborhood" class="w-full border-2 p-1 rounded my-1">
-                
-                <p class=" font-bold mt-4">Cidade</p>
-                <input type="text" id="input-city" class="w-full border-2 p-1 rounded my-1">
-                
-                <p class=" font-bold mt-4">Estado</p>
-                <input type="text" id="input-state" class="w-full border-2 p-1 rounded my-1">
-
-                <div class="flex items-center justify-between mt-5 w-full">
-                    <button id="return-modal-btn">Voltar</button>
-                    <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded hover:scale-105">Finalizar pedido</button>
-                </div>
+            <h2 class="text-center font-bold text-2xl mb-2">ENDEREÇO</h2>
+        
+            <p class="font-bold mt-4">CEP</p>
+            <input type="text" id="input-cep" class="w-full border-2 p-1 rounded my-1">
+            <p class="text-red-500 hidden" id="cep-warn">Campo obrigatório!</p>
+            
+            <p class="font-bold mt-4">Rua</p>
+            <input type="text" id="input-street" class="w-full border-2 p-1 rounded my-1" readonly>
+            <p class="text-red-500 hidden" id="street-warn">Campo obrigatório!</p>
+            
+            <p class="font-bold mt-4">Número</p>
+            <input type="text" id="input-number" class="w-full border-2 p-1 rounded my-1">
+            <p class="text-red-500 hidden" id="number-warn">Campo obrigatório!</p>
+            
+            <p class="font-bold mt-4">Complemento</p>
+            <input type="text" id="input-complement" class="w-full border-2 p-1 rounded my-1">
+            
+            <p class="font-bold mt-4">Bairro</p>
+            <input type="text" id="input-neighborhood" class="w-full border-2 p-1 rounded my-1" readonly>
+            
+            <p class="font-bold mt-4">Cidade</p>
+            <input type="text" id="input-city" class="w-full border-2 p-1 rounded my-1" readonly>
+            
+            <p class="font-bold mt-4">Estado</p>
+            <input type="text" id="input-state" class="w-full border-2 p-1 rounded my-1" readonly>
+        
+            <div class="flex items-center justify-between mt-5 w-full">
+                <button id="return-modal-btn">Voltar</button>
+                <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded hover:scale-105">Finalizar pedido</button>
             </div>
-
+            </div>
         </div>
         <!-- FIM MODAL ADDRESS-->
+
 
         <!--BUTTON CART FOOTER-->
         <footer class="w-full py-3 fixed bottom-0 z-40 flex items-center justify-center" style="background-color: #744214;">

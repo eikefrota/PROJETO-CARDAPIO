@@ -23,6 +23,7 @@ const checkoutBtn = document.getElementById("checkout-btn")
 const addressWarn = document.getElementById("address-warn")
 
 let cart = []
+let cartTotalValue = 0; // Variável global para armazenar o total
 
 // Abrir o modal carrinho // 
 cartBtn.addEventListener("click", function(){
@@ -75,6 +76,67 @@ addressModal.addEventListener("click", function(event){
     {addressModal.style.display = "none"}
 })
 
+// Buscar endereço via CEP //
+inputCep.addEventListener("blur", () => {
+    const cep = inputCep.value;
+
+    if (cep.length === 8) {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => response.json())
+            .then(data => {
+            if (!data.erro) {
+                inputStreet.value = data.logradouro;
+                inputNeighborhood.value = data.bairro;
+                inputCity.value = data.localidade;
+                inputState.value = data.uf;
+            }
+            else {
+                Toastify({
+                    text: "CEP não encontrado!",
+                    duration: 5000,
+                    close: true,
+                    gravity: "top", 
+                    position: "center", 
+                    stopOnFocus: true, 
+                    style: {
+                        background: "#EF4444",
+                    },
+                }).showToast();
+            }
+            })
+            .catch(() => Toastify({
+                text: "Erro ao buscar CEP. Verifique sua conexão!",
+                duration: 5000,
+                close: true,
+                gravity: "top", 
+                position: "center", 
+                stopOnFocus: true, 
+                style: {
+                    background: "#EF4444",
+                },
+            }).showToast());
+        } 
+        else {
+            Toastify({
+                text: "CEP inválido! O CEP deve conter 8 dígitos!",
+                duration: 5000,
+                close: true,
+                gravity: "top", 
+                position: "center", 
+                stopOnFocus: true, 
+                style: {
+                    background: "#EF4444",
+                },
+            }).showToast();
+        }
+});
+
+// Permitir apenas números e limitar a 8 caracteres //
+inputCep.addEventListener("input", () => {
+    inputCep.value = inputCep.value.replace(/\D/g, "").slice(0, 8);
+});
+
+
 // Pegando o nome e valor do item clicado //    
 menu.addEventListener("click", function(event){
     let parentButton = event.target.closest(".add-to-cart-btn")
@@ -104,15 +166,15 @@ function addToCart(name, price){
     updateCartModel()
 }
 
-// Atualiza o carrinho //
-function updateCartModel(){
+
+// Atualiza o carrinho
+function updateCartModel() {
     cartItemsContainer.innerHTML = "";
     let total = 0;
 
-    // Para cada item do array Cart, cria-se um HTML(nome, quantidade e preço) dentro do modal carrinho //
     cart.forEach(item => {
         const cartItemElement = document.createElement("div");
-        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
+        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col");
         cartItemElement.innerHTML = `
             <div class="flex items-center justify-between">
                 <div>
@@ -124,23 +186,24 @@ function updateCartModel(){
                 <button class="remove-btn" data-name="${item.name}">
                     Remover
                 </button>
-
             </div>
-        `
+        `;
         total += item.price * item.quantity;
 
-        cartItemsContainer.appendChild(cartItemElement)
+        cartItemsContainer.appendChild(cartItemElement);
+    });
 
-    })
-
-    // Tranforma o preço em Real //
     cartTotal.textContent = total.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL"
     });
 
     cartCounter.innerText = cart.length;
+
+    // Atualiza a variável global com o valor total
+    cartTotalValue = total;
 }
+
 
 // Função para remover item do carrinho //
 function removeItemCart(name){
@@ -173,7 +236,7 @@ cartItemsContainer.addEventListener("click", function(event){
 function checkOpen(){
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 && hora < 22;
+    return hora >= 0 && hora < 23;
 }
 
 const isOpen = checkOpen();
@@ -188,10 +251,45 @@ else{
     dateSpan.classList.add("bg-red-500")
 }
 
-// Função de finalizar o pedido //
-checkoutBtn.addEventListener("click", function(){
-    // Caso o pedido for feito fora do horário de funcionamento, é exibida a mensagem //
-    if(!isOpen){
+
+// Função de validação de campos obrigatórios
+function validateAddressFields() {
+    let isValid = true;
+
+    // Função auxiliar para verificar e destacar campos vazios
+    function checkField(field) {
+        if (field.value.trim() === "") {
+            field.classList.add("border-red-500"); // Adicionar borda vermelha para destacar erro
+            const warning = field.nextElementSibling;
+            if (warning && warning.classList.contains("text-red-500")) {
+                warning.classList.remove("hidden"); // Mostrar aviso de campo obrigatório
+            }
+            isValid = false;
+        } else {
+            field.classList.remove("border-red-500");
+            const warning = field.nextElementSibling;
+            if (warning && warning.classList.contains("text-red-500")) {
+                warning.classList.add("hidden"); // Ocultar aviso se o campo estiver preenchido
+            }
+        }
+    }
+
+    // Validar cada campo obrigatório
+    checkField(inputCep);
+    checkField(inputStreet);
+    checkField(inputNumber);
+    checkField(inputNeighborhood);
+    checkField(inputCity);
+    checkField(inputState);
+
+    return isValid;
+}
+
+
+// Função de finalizar o pedido
+checkoutBtn.addEventListener("click", function() {
+    // Caso o pedido for feito fora do horário de funcionamento, exibe a mensagem
+    if (!isOpen) {
         Toastify({
             text: "Ops, no momento estamos fechados!",
             duration: 3000,
@@ -203,29 +301,43 @@ checkoutBtn.addEventListener("click", function(){
                 background: "#EF4444",
             },
         }).showToast();
-
         return;
     }
 
-    if(addressInput.value === ""){
-        addressWarn.classList.remove("hidden")
-        addressInput.classList.add("border-red-500");
+    // Validar campos de endereço
+    if (!validateAddressFields()) {
+        Toastify({
+            text: "Por favor, preencha todos os campos obrigatórios!",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {
+                background: "#EF4444",
+            },
+        }).showToast();
         return;
     }
 
-    // Enviar mensagem pelo WhatsApp //
+    // Montar mensagem de pedido
     const cartItems = cart.map((item) => {
-        return (
-            `\n*${item.name}*\n*Quantidade:* ${item.quantity}\n*Preço:* R$${item.price}\n-------------------------------------------\n`);
+        return `\n*${item.name}*\n*Quantidade:* ${item.quantity}\n*Preço:* R$${item.price}\n-------------------------------------------\n`;
     }).join("");
+
+    // Adiciona o valor total no final da mensagem
+    const totalMessage = `*VALOR TOTAL:* R$ ${cartTotalValue.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
+
+    const addressMessage = `*ENDEREÇO DE ENTREGA:* ${inputStreet.value}, ${inputNumber.value}, ${inputComplement.value || "N/A"} - ${inputNeighborhood.value}, ${inputCity.value}-${inputState.value}, ${inputCep.value}`;
     
-    const addressMessage = `*Endereço de Entrega:* ${addressInput.value}`;
-    
-    const message = encodeURIComponent(`${cartItems}\n${addressMessage}`);
+    const message = encodeURIComponent(`\n${cartItems}\n${totalMessage}\n${addressMessage}`);
     const phone = "+5585999062339";
-    
+
+    // Enviar mensagem pelo WhatsApp
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-    
+
+    // Limpar carrinho e atualizar
     cart = [];
     updateCartModel();
-})
+});
+
