@@ -5,6 +5,10 @@ Neste projeto específico, o cardápio representa um restaurante de hambúrguere
 
 Este projeto foi criado com fins de estudo e para ampliar meus conhecimentos em desenvolvimento web, utilizando HTML, CSS, JavaScript e Tailwind CSS. Continuarei a expandir este sistema com novas funcionalidades e melhorias, visando aprimorar minhas habilidades e oferecer uma experiência ainda melhor aos usuários.
 
+![frotagourmet-desktop](https://github.com/user-attachments/assets/7f925237-d4c1-479a-8a87-009a35aadd22)
+
+![frotagourmet-mobile](https://github.com/user-attachments/assets/8cf8b68a-c14a-4a24-95dc-aab9db70ffdb)
+
 # Funcionalidades
 
 ### Navegação pelos Produtos: 
