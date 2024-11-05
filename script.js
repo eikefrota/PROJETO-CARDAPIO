@@ -236,7 +236,7 @@ cartItemsContainer.addEventListener("click", function(event){
 function checkOpen(){
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 0 && hora < 23;
+    return hora >= 18 && hora < 22;
 }
 
 const isOpen = checkOpen();
