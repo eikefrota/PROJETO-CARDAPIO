@@ -23,4 +23,6 @@ Este projeto foi criado com fins de estudo e para ampliar meus conhecimentos em 
 ### Finalização do Pedido: 
 - Após a escolha dos produtos, as informações do pedido são enviadas para o WhatsApp cadastrado, facilitando a comunicação e a confirmação do pedido.
 
+# Deploy
+Link para o deploy: https://frotagourmet.netlify.app/
 
