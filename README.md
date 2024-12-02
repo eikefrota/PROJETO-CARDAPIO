@@ -1,28 +1,28 @@
-# Cardápio Online
-Este projeto é um sistema de pedidos online que visa facilitar a experiência de compra em diversas ocasiões. Embora tenha sido desenvolvido com foco em um restaurante, permitindo que os clientes naveguem pelos produtos e façam seus pedidos de maneira simples e eficiente, o sistema pode ser aplicado em outros contextos, como lojas de roupas, acessórios ou outros tipos de comércio. O design responsivo garante uma ótima usabilidade em dispositivos móveis e desktops.
+![Logo do Projeto](https://github.com/user-attachments/assets/53dc17e2-5ca6-4d26-8ce5-4a631aebcbc0)
 
-Neste projeto específico, o cardápio representa um restaurante de hambúrgueres e pizzas, oferecendo uma ampla variedade de opções de comidas e bebidas. Os clientes podem explorar o cardápio, selecionar produtos e têm a flexibilidade de adicionar ou excluir itens do carrinho conforme desejarem.
+# Cardápio Online 🍕🍔
 
-Este projeto foi criado com fins de estudo e para ampliar meus conhecimentos em desenvolvimento web, utilizando HTML, CSS, JavaScript e Tailwind CSS. Continuarei a expandir este sistema com novas funcionalidades e melhorias, visando aprimorar minhas habilidades e oferecer uma experiência ainda melhor aos usuários.
+Um cardápio totalmente digital, oferecendo uma ampla variedade de produtos como hambúgueres, pizzas e bebidas para acompanhar!
 
-![frotagourmet-desktop](https://github.com/user-attachments/assets/7f925237-d4c1-479a-8a87-009a35aadd22)
+## 🔥 Introdução
 
-![frotagourmet-mobile](https://github.com/user-attachments/assets/8cf8b68a-c14a-4a24-95dc-aab9db70ffdb)
+Este projeto é um sistema de pedidos online que visa facilitar a experiência de compra em diversas ocasiões. Embora tenha sido desenvolvido com foco em um restaurante, o sistema pode ser aplicado em outros contextos, como lojas de roupas, acessórios ou outros tipos de comércio, permitindo que os clientes naveguem pelos produtos e façam seus pedidos de maneira simples e eficiente. 
 
-# Funcionalidades
+Neste projeto em específico, os clientes podem explorar o cardápio, selecionar produtos e têm a flexibilidade de adicionar ou excluir itens do carrinho conforme desejarem. Para finalizar o pedido, basta colocar o endereço de entrega e será direcionado diretamento ao WhatsApp do estabelecimento.  
 
-### Navegação pelos Produtos: 
-- Os clientes podem visualizar diferentes opções de hambúrgueres e pizzas, bem como bebidas disponíveis.
+O design responsivo garante uma ótima usabilidade em dispositivos móveis e desktops!
 
-### Adicionar e Excluir Produtos: 
-- Possibilidade de gerenciar os itens no carrinho, permitindo que os usuários adicionem novos produtos ou removam aqueles que não desejam mais.
+## 📦 Tecnologias usadas:
 
-### Escolha do Endereço de Entrega: 
-- Utilização de uma API que preenche automaticamente o endereço de entrega com base no CEP informado, tornando o processo mais ágil.
+* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+* ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+* ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-### Finalização do Pedido: 
-- Após a escolha dos produtos, as informações do pedido são enviadas para o WhatsApp cadastrado, facilitando a comunicação e a confirmação do pedido.
+## 🌐 Deploy:
 
-# Deploy
-Link para o deploy: https://frotagourmet.netlify.app/
+Frota´s Gourmet: https://frotagourmet.netlify.app/
 
+## 💡 Contatos:
+
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eikefrota/)  [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5585999062339)  [![Outlook](https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white)](mailto:eikefrotaa@hotmail.com)
