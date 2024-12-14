@@ -1,4 +1,4 @@
-![Logo do Projeto](https://github.com/user-attachments/assets/53dc17e2-5ca6-4d26-8ce5-4a631aebcbc0)
+![Mockup do Projeto](https://github.com/user-attachments/assets/53dc17e2-5ca6-4d26-8ce5-4a631aebcbc0)
 
 # Cardápio Online 🍕🍔
 
